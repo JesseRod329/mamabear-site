@@ -253,7 +253,7 @@
       height: 580px;
       background: var(--bg-dark);
       border-radius: 40px;
-      padding: 12px;
+      padding: 8px;
       box-shadow:
         20px 20px 60px var(--shadow-dark),
         -20px -20px 60px var(--shadow-light),
@@ -262,110 +262,12 @@
       overflow: hidden;
     }
 
-    .phone-screen {
+    .phone img {
       width: 100%;
       height: 100%;
-      background: var(--bg);
-      border-radius: 30px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .phone-notch {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 30px;
-      background: var(--bg-dark);
-      border-radius: 0 0 18px 18px;
-      z-index: 2;
-    }
-
-    .screen-content {
-      padding: 44px 16px 16px;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    .screen-greeting {
-      font-size: 11px;
-      color: var(--text-secondary);
-      margin-bottom: 2px;
-    }
-
-    .screen-name {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .screen-actions {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .screen-action {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
-    }
-
-    .screen-card {
-      background: var(--bg);
-      border-radius: 16px;
-      padding: 12px;
-      margin-bottom: 10px;
-      box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
-    }
-
-    .screen-card-title {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-    }
-
-    .screen-card-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .screen-stat {
-      text-align: center;
-    }
-
-    .screen-stat-num {
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .screen-stat-label {
-      font-size: 9px;
-      color: var(--text-secondary);
-    }
-
-    .nap-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: var(--baby);
-      color: var(--text);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 10px;
-      font-weight: 600;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 32px;
     }
 
     .phone-float {
@@ -413,6 +315,73 @@
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
+    }
+
+    /* Screenshots Carousel */
+    .screenshots {
+      background: white;
+      overflow: hidden;
+    }
+
+    .screenshots-track {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      padding: 0 20px;
+    }
+
+    .screenshot-item {
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .screenshot-phone {
+      width: 240px;
+      height: 500px;
+      background: var(--bg-dark);
+      border-radius: 36px;
+      padding: 7px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      transition: transform 0.3s;
+    }
+
+    .screenshot-phone:hover {
+      transform: translateY(-8px);
+    }
+
+    .screenshot-phone img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 29px;
+    }
+
+    .screenshot-label {
+      margin-top: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .screenshot-sublabel {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .screenshots-track {
+        justify-content: flex-start;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 40px;
+      }
+      .screenshot-item {
+        scroll-snap-align: center;
+      }
     }
 
     /* Sections */
@@ -878,58 +847,7 @@
 
       <div class="phone-mockup">
         <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <div class="screen-content">
-              <div class="screen-greeting">Good morning</div>
-              <div class="screen-name">Sarah</div>
-              <div class="screen-actions">
-                <div class="screen-action" style="background: rgba(168,216,234,0.25);">&#x1F37C;</div>
-                <div class="screen-action" style="background: rgba(184,169,232,0.25);">&#x1F319;</div>
-                <div class="screen-action" style="background: rgba(123,200,164,0.25);">&#x1F476;</div>
-                <div class="screen-action" style="background: rgba(232,143,165,0.25);">&#x23F1;</div>
-                <div class="screen-action" style="background: rgba(240,194,127,0.25);">&#x1F6D2;</div>
-              </div>
-              <div class="screen-card">
-                <div class="screen-card-title">Luna's Day</div>
-                <div class="nap-badge" style="margin-bottom: 8px;">&#x1F319; Napping &bull; 42min</div>
-                <div class="screen-card-row">
-                  <div class="screen-stat">
-                    <div class="screen-stat-num" style="color: var(--baby);">4</div>
-                    <div class="screen-stat-label">Feeds</div>
-                  </div>
-                  <div class="screen-stat">
-                    <div class="screen-stat-num" style="color: var(--chores);">3</div>
-                    <div class="screen-stat-label">Diapers</div>
-                  </div>
-                  <div class="screen-stat">
-                    <div class="screen-stat-num" style="color: var(--school);">2</div>
-                    <div class="screen-stat-label">Naps</div>
-                  </div>
-                  <div class="screen-stat">
-                    <div class="screen-stat-num" style="color: var(--grocery);">12oz</div>
-                    <div class="screen-stat-label">Bottles</div>
-                  </div>
-                </div>
-              </div>
-              <div class="screen-card">
-                <div class="screen-card-title">Chores</div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <div style="flex: 1; height: 6px; background: rgba(123,200,164,0.2); border-radius: 3px; overflow: hidden;">
-                    <div style="width: 65%; height: 100%; background: var(--chores); border-radius: 3px;"></div>
-                  </div>
-                  <span style="font-size: 12px; font-weight: 600; color: var(--chores);">65%</span>
-                </div>
-              </div>
-              <div class="screen-card">
-                <div class="screen-card-title">Cycle Day 14</div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <div style="width: 28px; height: 28px; border-radius: 50%; border: 3px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;">14</div>
-                  <span style="font-size: 12px; color: var(--text-secondary);">Fertile window</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <img src="screenshots/01-dashboard.png" alt="MamaBear Dashboard - Baby tracking, chores, cycle tracking all in one view">
         </div>
 
         <div class="phone-float top-right">
@@ -996,6 +914,45 @@
         <div class="feature-icon" style="background: rgba(244,162,97,0.2);">&#x1F46A;</div>
         <h3>Family Sharing</h3>
         <p>Invite your partner, nanny, or grandparents. Everyone stays in sync with shared access to the family hub.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="screenshots" id="screenshots">
+    <div class="section-header reveal">
+      <div class="section-label">App Preview</div>
+      <h2 class="section-title">See it in action</h2>
+      <p class="section-subtitle">Real screenshots from MamaBear running on iPhone.</p>
+    </div>
+    <div class="screenshots-track reveal">
+      <div class="screenshot-item">
+        <div class="screenshot-phone">
+          <img src="screenshots/01-dashboard.png" alt="MamaBear Dashboard" loading="lazy">
+        </div>
+        <div class="screenshot-label">Dashboard</div>
+        <div class="screenshot-sublabel">Your day at a glance</div>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-phone">
+          <img src="screenshots/02-baby.png" alt="MamaBear Baby Tracker" loading="lazy">
+        </div>
+        <div class="screenshot-label">Baby Tracker</div>
+        <div class="screenshot-sublabel">Feeds, naps, diapers</div>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-phone">
+          <img src="screenshots/03-family.png" alt="MamaBear Family Chores" loading="lazy">
+        </div>
+        <div class="screenshot-label">Family</div>
+        <div class="screenshot-sublabel">Chores, grocery, school</div>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-phone">
+          <img src="screenshots/04-me.png" alt="MamaBear Cycle Tracker" loading="lazy">
+        </div>
+        <div class="screenshot-label">Cycle Tracker</div>
+        <div class="screenshot-sublabel">Period, insights, calendar</div>
       </div>
     </div>
   </section>
